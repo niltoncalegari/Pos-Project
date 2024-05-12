@@ -13,7 +13,6 @@ internal class UserRolePermissionConfiguration : IEntityTypeConfiguration<UserRo
         builder.Property(urp => urp.Role)
             .HasMaxLength(50);
 
-        builder.Property(urp => urp.Permissions)
-            .HasMaxLength(500);
+        builder.Property(urp => urp.Permissions);
     }
 }

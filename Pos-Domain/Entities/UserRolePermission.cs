@@ -1,8 +1,11 @@
-﻿namespace Pos_Domain.Entities;
+﻿using Pos_Domain.Enums;
 
-public class UserRolePermission
+namespace Pos_Domain.Entities;
+
+public sealed class UserRolePermission
 {
     public int Id { get; set; }
     public string Role { get; set; }
-    public string Permissions { get; set; }
+    public ICollection<PermissionEnum> Permissions { get; set; }
+    public ICollection<User> Users { get; set; }
 }

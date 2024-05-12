@@ -16,5 +16,8 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Password)
             .HasMaxLength(100)
             .IsRequired(); // Assuming encrypted passwords are stored.
+        builder.HasMany(u => u.UserRolePermissions)
+            .WithMany(urp => urp.Users);
+            
     }
 }
