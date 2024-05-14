@@ -10,6 +10,7 @@ internal class TutorConfiguration : IEntityTypeConfiguration<Tutor>
     {
         builder.ToTable("Tutors");
         builder.Property(t => t.Id).IsRequired();
+        builder.HasKey(p => p.Id);
         builder.Property(t => t.Name).IsRequired().HasMaxLength(100);
         builder.Property(t => t.PhoneNumber).IsRequired().HasMaxLength(15);
         builder.Property(t => t.Email).HasMaxLength(50);

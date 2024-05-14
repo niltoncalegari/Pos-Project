@@ -10,22 +10,25 @@ internal class PetConfiguration : IEntityTypeConfiguration<Pet>
     {
         builder.ToTable("Pets");
 
-        // Configuring properties
+        builder.HasKey(p => p.Id);
+        builder.Property(p => p.Id);
+
+        builder.Property(p => p.Type).IsRequired();
+        builder.Property(p => p.Gender).IsRequired();
         builder.Property(p => p.Color).IsRequired();
         builder.Property(p => p.Breed).IsRequired();
         builder.Property(p => p.Age).IsRequired();
         builder.Property(p => p.Medicines).IsRequired(false);
         builder.Property(p => p.Vaccines).IsRequired(false);
         builder.Property(p => p.Location).IsRequired();
+        builder.Property(p => p.TutorName).IsRequired();
+        builder.Property(p => p.Photo).IsRequired();
         builder.Property(p => p.Behavior).IsRequired();
-        builder.Property(p => p.TutorId);
+        builder.Property(p => p.TutorId).IsRequired();
+
         builder.HasOne(p => p.Tutor)
-               .WithMany(t => t.Pets)
-               .HasForeignKey(p => p.TutorId);
-
-        builder.HasIndex(p => p.Id).IsUnique();
-
-        builder.Property(p => p.Id)
-               .HasComputedColumnSql("IIF([Gender] = 1, (1 + 2 * (SELECT COUNT(*) FROM Pets WHERE Gender = 1)), 2 * (SELECT COUNT(*) FROM Pets WHERE Gender = 0))");
+            .WithMany(t => t.Pets)
+            .HasForeignKey(p => p.TutorId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

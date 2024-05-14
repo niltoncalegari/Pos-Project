@@ -49,7 +49,7 @@ public abstract class DesignTimeDbContextFactoryBase<TContext> :
     protected virtual DbContextOptionsBuilder<TContext> GetBuilder(string connectionString)
     {
         var builder = new DbContextOptionsBuilder<TContext>();
-        builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+        builder.UseNpgsql(connectionString);  // Changed from UseMySql to UseNpgsql
 
         return builder;
     }

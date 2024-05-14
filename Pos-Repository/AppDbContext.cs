@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pos_Repository.EntityConfiguration;
 
 namespace Pos_Repository;
 

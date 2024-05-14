@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AppDatabase");
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+    options.UseNpgsql(connectionString);
 });
 
 builder.Services.AddControllers();

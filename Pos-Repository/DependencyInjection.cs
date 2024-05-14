@@ -13,7 +13,7 @@ public static class DependencyInjection
         var connectionString = configuration.GetConnectionString("AppDatabase");
         services.AddDbContext<AppDbContext>(options =>
         {
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            options.UseNpgsql(connectionString);
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();

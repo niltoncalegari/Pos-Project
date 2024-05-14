@@ -2,8 +2,8 @@
 
 public enum PermissionEnum
 {
-    None = 0,
-    Admin = 1,
-    View = 2,
-    Edit = 3,
+    None,
+    Admin,
+    View,
+    Edit,
 }
